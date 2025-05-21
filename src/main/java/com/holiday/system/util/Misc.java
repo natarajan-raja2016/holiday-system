@@ -18,7 +18,6 @@ public class Misc {
 			try {
 				iso3CountryCodes.add(locale.getISO3Country().toUpperCase());
 			} catch (MissingResourceException e) {
-				// Skip locales without ISO3 country codes
 			}
 		}
 	}
@@ -43,7 +42,7 @@ public class Misc {
 			return true;
 		}
 	}
-	
+
 	public static LocalDate parseDate(String dateStr) {
 		try {
 			return LocalDate.parse(dateStr, FORMATTER);
@@ -52,7 +51,7 @@ public class Misc {
 			return null;
 		}
 	}
-	
+
 	public static boolean isValidDate(String dateStr) {
 		return parseDate(dateStr) != null;
 	}

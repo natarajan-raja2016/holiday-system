@@ -1,14 +1,8 @@
 package com.holiday.system.controller;
 
-import com.holiday.system.dto.HolidayDTO;
-import com.holiday.system.dto.HolidayResponse;
-import com.holiday.system.dto.HolidayUpdateRequest;
-import com.holiday.system.exception.MandatoryFieldException;
-import com.holiday.system.service.HolidayService;
-import com.holiday.system.util.Misc;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import jakarta.validation.Valid;
+import java.time.LocalDate;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,11 +10,28 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.time.LocalDate;
-import java.util.List;
+import com.holiday.system.dto.HolidayDTO;
+import com.holiday.system.dto.HolidayResponse;
+import com.holiday.system.dto.HolidayUpdateRequest;
+import com.holiday.system.exception.MandatoryFieldException;
+import com.holiday.system.service.HolidayService;
+import com.holiday.system.util.Misc;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/holidays")
@@ -37,7 +48,7 @@ public class HolidayController {
 	/**
 	 * To add Holiday entry
 	 * @param holidayDTO - DTO object carry the required attributes for holiday entry
-	 * @return - the status of add endpoint
+	 * @return - the status of add end point
 	 */
 	@PostMapping("/add")
 	public ResponseEntity<String> addHoliday(@Valid @RequestBody HolidayDTO holidayDTO) {
@@ -112,7 +123,7 @@ public class HolidayController {
 	 * @param countryCode country code should be ISO3 country code
 	 * @param holidayName Holiday name
 	 * @param updateRequest DTO object to receive the Request body input
-	 * @return Endpoint status
+	 * @return End point status
 	 */
 	@PutMapping("/updateHolidayByCodeAndName")
 	public ResponseEntity<String> updateHolidayByCodeAndName(@RequestParam("country_code") String countryCode,

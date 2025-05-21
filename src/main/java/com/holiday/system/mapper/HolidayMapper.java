@@ -1,10 +1,10 @@
 package com.holiday.system.mapper;
 
+import org.springframework.stereotype.Component;
+
 import com.holiday.system.dto.HolidayDTO;
-import com.holiday.system.dto.HolidayResponse;
 import com.holiday.system.model.Country;
 import com.holiday.system.model.Holiday;
-import org.springframework.stereotype.Component;
 
 @Component
 public class HolidayMapper {

@@ -1,6 +1,5 @@
 package com.holiday.system.mapper;
 
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
@@ -17,7 +16,6 @@ class HolidayMapperTest {
 
 	@Test
 	void testToDto() {
-		// Arrange
 		Country country = new Country();
 		country.setCountryCode("USD");
 		country.setCountryName("United States");
@@ -28,10 +26,8 @@ class HolidayMapperTest {
 		holiday.setHolidayDow("WEDNESDAY");
 		holiday.setCountry(country);
 
-		// Act
 		HolidayDTO dto = mapper.toDto(holiday);
 
-		// Assert
 		assertThat(dto).isNotNull();
 		assertThat(dto.getHoliday_name()).isEqualTo("New Year");
 		assertThat(dto.getHoliday_date()).isEqualTo(LocalDate.of(2025, 1, 1));
@@ -40,17 +36,14 @@ class HolidayMapperTest {
 
 	@Test
 	void testToEntity() {
-		// Arrange
 		HolidayDTO dto = new HolidayDTO();
 		dto.setHoliday_name("Christmas");
 		dto.setHoliday_date(LocalDate.of(2025, 12, 25));
 		dto.setCountry_code("CAD");
 		dto.setCountry_name("Canada");
 
-		// Act
 		Holiday holiday = mapper.toEntity(dto);
 
-		// Assert
 		assertThat(holiday).isNotNull();
 		assertThat(holiday.getHolidayName()).isEqualTo("Christmas");
 		assertThat(holiday.getHolidayDate()).isEqualTo(LocalDate.of(2025, 12, 25));

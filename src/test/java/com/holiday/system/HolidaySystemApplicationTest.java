@@ -10,7 +10,6 @@ public class HolidaySystemApplicationTest {
 
     @Test
     void testMainMethod() {
-        // Act & Assert
         assertDoesNotThrow(() -> HolidaySystemApplication.main(new String[]{}));
     }
 }
